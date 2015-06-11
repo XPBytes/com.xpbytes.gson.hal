@@ -6,7 +6,7 @@ public class HalLinkObject {
 
     public HalLinkObject() {}
 
-    public URI href;
+    public String href;
     public boolean templated;
     public String type;
     public String name;
@@ -15,7 +15,7 @@ public class HalLinkObject {
     public String title;
     public String hreflang;
 
-    public URI getHref() {
+    public String getHref() {
         return href;
     }
 }
