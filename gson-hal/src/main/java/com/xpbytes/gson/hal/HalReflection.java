@@ -30,7 +30,7 @@ final class HalReflection {
      * @return a list of fields
      */
     static synchronized List<Field> getAllFields( Class<?> type ) {
-        return getAllFields( new ArrayList<>(), type );
+        return getAllFields( new ArrayList<Field>(), type );
     }
 
     /**
@@ -176,9 +176,9 @@ final class HalReflection {
     public static <A> void setLink( Field field, HalLinkObject resource, A object ) {
         Class<?> destinationType = getFieldItemizedType( field );
         if ( CharSequence.class.isAssignableFrom( destinationType ) )
-            setFieldSafe( field, object, resource.getHref().toString() );
-        else if ( URI.class.isAssignableFrom( destinationType ) )
             setFieldSafe( field, object, resource.getHref() );
+        else if ( URI.class.isAssignableFrom( destinationType ) )
+            setFieldSafe( field, object, URI.create( resource.getHref() ) );
         else if ( HalLinkObject.class.isAssignableFrom( destinationType ) )
             setFieldSafe( field, object, resource );
         else
