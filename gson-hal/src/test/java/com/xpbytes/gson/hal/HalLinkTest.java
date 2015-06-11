@@ -19,9 +19,6 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-/**
- * Created by Derk-Jan on 10-6-2015.
- */
 @RunWith( JUnit4.class )
 public class HalLinkTest {
 
@@ -72,7 +69,7 @@ public class HalLinkTest {
 
         HalLinkLinkObjectTestResource deserialized = gson.fromJson( gsonSerialized, HalLinkLinkObjectTestResource.class );
         assertThat( deserialized, is( notNullValue() ) );
-        assertThat( deserialized.linkObjectLink.getHref(), equalTo( URI.create( link ) ) );
+        assertThat( deserialized.linkObjectLink.getHref(), equalTo( link ) );
     }
 
     @Test
