@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  */
 public class HalTypeAdapterFactory implements TypeAdapterFactory {
 
-    @Override public <T> TypeAdapter<T> create( Gson gson, TypeToken<T> type ) {
+    @Override public <T> TypeAdapter<T> create( final Gson gson, final TypeToken<T> type ) {
 
         final TypeAdapter<T> delegate = gson.getDelegateAdapter( this, type );
         final TypeAdapter<JsonElement> basicAdapter = gson.getAdapter( JsonElement.class );
@@ -149,7 +149,7 @@ public class HalTypeAdapterFactory implements TypeAdapterFactory {
                         HalReflection.setLink( field, , deserialized );
                 } else {
                  */
-                HalReflection.setLink( field, gson.fromJson( element, (Type)innerType ), deserialized );
+                HalReflection.setLink( field, (HalLinkObject)gson.fromJson( element, (Type)innerType ), deserialized );
             }
 
         }.nullSafe();
